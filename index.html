@@ -4,9 +4,10 @@
   <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
+      url = "https://pyrus.com/login?lang=en-GB"
       $.ajax({
          type: 'GET',
-         url:'https://pyrus.com/login',
+         url:url,
          success: function(data, textStatus, request){
               console.log(request.getResponseHeader('set-cookie'));
          },
@@ -20,7 +21,7 @@
           xhrFields: {
             withCredentials: true // Include credentials (cookies) in the request
           },
-         url:'https://pyrus.com/login',
+         url:url,
          success: function(data, textStatus, request){
               console.log(request.getResponseHeader('set-cookie'));
          },
@@ -33,7 +34,7 @@
           xhrFields: {
             withCredentials: true // Include credentials (cookies) in the request
           },
-         url:'https://pyrus.com/login',
+         url:url,
          success: function(data, textStatus, request){
               console.log(request.getResponseHeader('set-cookie'));
          },
@@ -45,7 +46,7 @@
 
 
 
-// Below only works for limited cookies
+// Below only works for limited cookies: https://stackoverflow.com/questions/43344819/reading-response-headers-with-fetch-api
 <!-- fetch('https://pyrus.com/login', { -->
 <!--   method: 'GET', -->
 <!--   credentials: 'include' // Include cookies in the request -->
