@@ -1,21 +1,49 @@
 <html>
   <head>
 
-  <script src="https://code.jquery.com/jquery-latest.min.js" integrity="sha384-d6GZ5k6XzO7MdUm8K6O1b9KZKVmV5RxAoA8+jp4Ph9f+nHqlsDP5k9caKcOBbOFf" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-latest.min.js" integrity="sha384-d6GZ5k6XzO7MdUm8K6O1b9KZKVmV5RxAoA8+jp4Ph9f+nHqlsDP5k9caKcOBbOFf" crossorigin="anonymous"></script> -->
     <script>
-    $(document).ready(function(){
-      $.ajax({
-         type: 'POST',
-         url:'https://pyrus.com/login',
-         data: formData,
-         success: function(data, textStatus, request){
-              alert(request.getResponseHeader('set-cookie'));
-         },
-         error: function (request, textStatus, errorThrown) {
-              alert(request.getResponseHeader('set-cookie'));
-         }
-        });
-      })
+    <!-- $(document).ready(function(){ -->
+    <!--   $.ajax({ -->
+    <!--      type: 'POST', -->
+    <!--      url:'https://pyrus.com/login', -->
+    <!--      data: formData, -->
+    <!--      success: function(data, textStatus, request){ -->
+    <!--           alert(request.getResponseHeader('set-cookie')); -->
+    <!--      }, -->
+    <!--      error: function (request, textStatus, errorThrown) { -->
+    <!--           alert(request.getResponseHeader('set-cookie')); -->
+    <!--      } -->
+    <!--     }); -->
+    <!--   }) -->
+
+
+
+fetch('https://pyrus.com/login', {
+  method: 'GET',
+  credentials: 'include' // Include cookies in the request
+})
+  .then(response => {
+    if (response.ok) {
+      // Access response headers to read cookies
+      const headers = response.headers;
+      const cookies = headers.get('Set-Cookie'); // Get 'Set-Cookie' header
+
+      if (cookies) {
+        // Do something with the cookies
+        console.log('Received Cookies:', cookies);
+      } else {
+        console.log('No cookies received.');
+      }
+
+      // Handle successful response...
+    } else {
+      throw new Error('Network response was not ok.');
+    }
+  })
+  .catch(error => {
+    console.error('Fetch Error:', error);
+  });
     </script>
   </head>
   <body>
