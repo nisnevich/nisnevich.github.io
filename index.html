@@ -3,7 +3,6 @@
 
   <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
     <script>
-    $(document).ready(function(){
 var req = new XMLHttpRequest();
 req.onload = reqListener;
 req.open('get','https://pyrus.com/login?lang=en-GB',true);
@@ -15,76 +14,6 @@ function reqListener() {
   console.log(this.responseText)
 };
 
-      // set-cookie undefined
-      <!-- url = "https://pyrus.com/login?lang=en-GB" -->
-      <!-- $.ajax({ -->
-      <!--    type: 'GET', -->
-      <!--    url:url, -->
-      <!--    success: function(data, textStatus, request){ -->
-      <!--         console.log(request.getResponseHeader('set-cookie')); -->
-      <!--    }, -->
-      <!--    error: function (request, textStatus, errorThrown) { -->
-      <!--         console.log(request.getResponseHeader('set-cookie')); -->
-      <!--    } -->
-      <!--   }); -->
-      <!--  -->
-      <!-- $.ajax({ -->
-      <!--    type: 'GET', -->
-      <!--     xhrFields: { -->
-      <!--       withCredentials: true // Include credentials (cookies) in the request -->
-      <!--     }, -->
-      <!--    url:url, -->
-      <!--    success: function(data, textStatus, request){ -->
-      <!--         console.log(request.getResponseHeader('set-cookie')); -->
-      <!--    }, -->
-      <!--    error: function (request, textStatus, errorThrown) { -->
-      <!--         console.log(request.getResponseHeader('set-cookie')); -->
-      <!--    } -->
-      <!--   }); -->
-      <!-- $.ajax({ -->
-      <!--    type: 'POST', -->
-      <!--     xhrFields: { -->
-      <!--       withCredentials: true // Include credentials (cookies) in the request -->
-      <!--     }, -->
-      <!--    url:url, -->
-      <!--    success: function(data, textStatus, request){ -->
-      <!--         console.log(request.getResponseHeader('set-cookie')); -->
-      <!--    }, -->
-      <!--    error: function (request, textStatus, errorThrown) { -->
-      <!--         console.log(request.getResponseHeader('set-cookie')); -->
-      <!--    } -->
-      <!--   }); -->
-      <!-- }) -->
-
-
-
-// Below only works for limited cookies: https://stackoverflow.com/questions/43344819/reading-response-headers-with-fetch-api
-<!-- fetch('https://pyrus.com/login', { -->
-<!--   method: 'GET', -->
-<!--   credentials: 'include' // Include cookies in the request -->
-<!-- }) -->
-<!--   .then(response => { -->
-<!--     if (response.ok) { -->
-<!--       // Access response headers to read cookies -->
-<!--       const headers = response.headers; -->
-<!--       console.log(headers) -->
-<!--       const cookies = headers.get('Set-Cookie'); // Get 'Set-Cookie' header -->
-<!--  -->
-<!--       if (cookies) { -->
-<!--         // Do something with the cookies -->
-<!--         console.log('Received Cookies:', cookies); -->
-<!--       } else { -->
-<!--         console.log('No cookies received.'); -->
-<!--       } -->
-<!--  -->
-<!--       // Handle successful response... -->
-<!--     } else { -->
-<!--       throw new Error('Network response was not ok.'); -->
-<!--     } -->
-<!--   }) -->
-<!--   .catch(error => { -->
-<!--     console.error('Fetch Error:', error); -->
-<!--   }); -->
     </script>
   </head>
   <body>
