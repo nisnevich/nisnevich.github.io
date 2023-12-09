@@ -1,1 +1,31 @@
-Hello dude
+<html>
+  <head>
+    <script>
+// Fetch data from example.com
+fetch('https://pyrus.com/t#inbox')
+  .then(response => {
+    // Check if the response is successful (status code 200)
+    if (response.ok) {
+      // Parse the response body as text
+      return response.text();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(data => {
+    // Display the fetched data on the current page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Replace 'data-container' with the ID or class of the container element where you want to display the data
+      document.getElementById('data-container').innerHTML = data;
+    });
+  })
+  .catch(error => {
+    // Handle errors
+    console.error('There was a problem with the fetch operation:', error);
+  });
+    </script>
+  </head>
+  <body>
+    Hello dude
+  </body>
+</html>
+
