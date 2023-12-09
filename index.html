@@ -4,45 +4,57 @@
   <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
     <script>
     $(document).ready(function(){
-      url = "https://pyrus.com/login?lang=en-GB"
-      $.ajax({
-         type: 'GET',
-         url:url,
-         success: function(data, textStatus, request){
-              console.log(request.getResponseHeader('set-cookie'));
-         },
-         error: function (request, textStatus, errorThrown) {
-              console.log(request.getResponseHeader('set-cookie'));
-         }
-        });
+var req = new XMLHttpRequest();
+req.onload = reqListener;
+req.open('get','https://pyrus.com/login?lang=en-GB',true);
+req.withCredentials = true;
+req.send();
 
-      $.ajax({
-         type: 'GET',
-          xhrFields: {
-            withCredentials: true // Include credentials (cookies) in the request
-          },
-         url:url,
-         success: function(data, textStatus, request){
-              console.log(request.getResponseHeader('set-cookie'));
-         },
-         error: function (request, textStatus, errorThrown) {
-              console.log(request.getResponseHeader('set-cookie'));
-         }
-        });
-      $.ajax({
-         type: 'POST',
-          xhrFields: {
-            withCredentials: true // Include credentials (cookies) in the request
-          },
-         url:url,
-         success: function(data, textStatus, request){
-              console.log(request.getResponseHeader('set-cookie'));
-         },
-         error: function (request, textStatus, errorThrown) {
-              console.log(request.getResponseHeader('set-cookie'));
-         }
-        });
-      })
+function reqListener() {
+  console.log("Request finished")
+  console.log(this.responseText)
+};
+
+      // set-cookie undefined
+      <!-- url = "https://pyrus.com/login?lang=en-GB" -->
+      <!-- $.ajax({ -->
+      <!--    type: 'GET', -->
+      <!--    url:url, -->
+      <!--    success: function(data, textStatus, request){ -->
+      <!--         console.log(request.getResponseHeader('set-cookie')); -->
+      <!--    }, -->
+      <!--    error: function (request, textStatus, errorThrown) { -->
+      <!--         console.log(request.getResponseHeader('set-cookie')); -->
+      <!--    } -->
+      <!--   }); -->
+      <!--  -->
+      <!-- $.ajax({ -->
+      <!--    type: 'GET', -->
+      <!--     xhrFields: { -->
+      <!--       withCredentials: true // Include credentials (cookies) in the request -->
+      <!--     }, -->
+      <!--    url:url, -->
+      <!--    success: function(data, textStatus, request){ -->
+      <!--         console.log(request.getResponseHeader('set-cookie')); -->
+      <!--    }, -->
+      <!--    error: function (request, textStatus, errorThrown) { -->
+      <!--         console.log(request.getResponseHeader('set-cookie')); -->
+      <!--    } -->
+      <!--   }); -->
+      <!-- $.ajax({ -->
+      <!--    type: 'POST', -->
+      <!--     xhrFields: { -->
+      <!--       withCredentials: true // Include credentials (cookies) in the request -->
+      <!--     }, -->
+      <!--    url:url, -->
+      <!--    success: function(data, textStatus, request){ -->
+      <!--         console.log(request.getResponseHeader('set-cookie')); -->
+      <!--    }, -->
+      <!--    error: function (request, textStatus, errorThrown) { -->
+      <!--         console.log(request.getResponseHeader('set-cookie')); -->
+      <!--    } -->
+      <!--   }); -->
+      <!-- }) -->
 
 
 
