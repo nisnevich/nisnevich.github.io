@@ -1,28 +1,21 @@
 <html>
   <head>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js" integrity="sha384-d6GZ5k6XzO7MdUm8K6O1b9KZKVmV5RxAoA8+jp4Ph9f+nHqlsDP5k9caKcOBbOFf" crossorigin="anonymous"></script>
     <script>
-// Fetch data from example.com
-fetch('https://pyrus.com/login')
-  .then(response => {
-    if (response.ok) {
-      var headers = response.headers; // Get headers from the Response object
-      console.log('Response Headers:', headers);
-
-      var cookies = response.headers.get('Set-Cookie'); // Get 'Set-Cookie' header
-      console.log('Cookies:', cookies);
-
-      return response.text(); // Parse the response body as text
-    }
-    throw new Error('Network response was not ok.');
-  })
-  .then(data => {
-    // Append the fetched HTML content to the body of the current webpage
-    console.log('Response:', data); // Display the response text
-    document.body.innerHTML += data;
-  })
-  .catch(error => {
-    console.error('Error fetching HTML content:', error);
-  });
+    $(document).ready(function(){
+      $.ajax({
+         type: 'POST',
+         url:'https://pyrus.com/login',
+         data: formData,
+         success: function(data, textStatus, request){
+              alert(request.getResponseHeader('set-cookie'));
+         },
+         error: function (request, textStatus, errorThrown) {
+              alert(request.getResponseHeader('set-cookie'));
+         }
+        });
+      })
     </script>
   </head>
   <body>
