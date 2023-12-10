@@ -46,6 +46,9 @@
       req.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
       req.setRequestHeader('host', 'pyrus.com');
       req.setRequestHeader('Cookie', 'ingressstick=1702215175.681.229250.596006|a5346d7f62657fb45e2d10cc3c8e6b63; www=kubest3');
+      req.setRequestHeader("Access-Control-Allow-Origin", "https://nisnevich.github.io/index.html")
+      req.setRequestHeader("Access-Control-Allow-Credentials", "true")
+      req.setRequestHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
   
       reqBody = "{}"
       req.send(selectedMethod === "POST" ? reqBody : null);
