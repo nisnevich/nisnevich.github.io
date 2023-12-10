@@ -44,50 +44,6 @@
       }
     }
   </script>
-
-  <hr>
-  <div>iframe test (origin=null)</div>
-  <iframe>
-    <form id="xhrForm">
-      <label for="urlInput">Enter URL for testing CORS and check results in console:</label>
-      <input type="text" id="urlInput" placeholder="https://example.com">
-      <label for="credentialsCheckbox">Include credentials (cookies)</label>
-      <input type="checkbox" id="credentialsCheckbox">
-      <button type="button" onclick="performRequest()">Send Request</button>
-    </form>
-
-    <script>
-      function performRequest() {
-        var url = document.getElementById('urlInput').value;
-        var req = new XMLHttpRequest();
-        var includeCredentials = document.getElementById('credentialsCheckbox').checked;
-
-        req.onload = reqListener;
-        req.open('GET', url, true);
-        req.withCredentials = includeCredentials;
-        req.send(null);
-
-        function reqListener() {
-          // Print headers
-          console.log(url + " headers: ")
-          console.log(this.getAllResponseHeaders())
-          // Access cookies from the response headers
-          var cookies = this.getAllResponseHeaders().split('Set-Cookie:');
-          if (cookies.length > 1) {
-            console.log("Cookies received:");
-            for (var i = 1; i < cookies.length; i++) {
-              console.log(cookies[i].trim());
-            }
-          } else {
-            console.log("No cookies received.");
-          }
-          // Print HTML
-          console.log("Response text:");
-          console.log(this.responseText);
-        }
-      }
-    </script>
-  </iframe>
 </body>
 </html>
 
