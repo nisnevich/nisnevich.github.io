@@ -20,25 +20,25 @@
       req.open('GET', url, true);
       req.withCredentials = true;
       req.send(null);
-    }
 
-    function reqListener() {
-      // Print headers
-      console.log(url + " headers: ")
-      colsole.log(this.getAllResponseHeaders())
-      // Access cookies from the response headers
-      var cookies = this.getAllResponseHeaders().split('Set-Cookie:');
-      if (cookies.length > 1) {
-        console.log("Cookies received:");
-        for (var i = 1; i < cookies.length; i++) {
-          console.log(cookies[i].trim());
+      function reqListener() {
+        // Print headers
+        console.log(url + " headers: ")
+        colsole.log(this.getAllResponseHeaders())
+        // Access cookies from the response headers
+        var cookies = this.getAllResponseHeaders().split('Set-Cookie:');
+        if (cookies.length > 1) {
+          console.log("Cookies received:");
+          for (var i = 1; i < cookies.length; i++) {
+            console.log(cookies[i].trim());
+          }
+        } else {
+          console.log("No cookies received.");
         }
-      } else {
-        console.log("No cookies received.");
+        // Print html
+        console.log("Response text:");
+        console.log(this.responseText);
       }
-      // Print html
-      console.log("Response text:");
-      console.log(this.responseText);
     }
   </script>
 </body>
