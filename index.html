@@ -44,28 +44,7 @@
       req.setRequestHeader('Accept-Language', 'en-GB,en-US;q=0.9,en;q=0.8');
       req.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
-      // Request body
-      var requestBody = JSON.stringify({
-        "req": {
-          "Params": {
-            "IncludeExtendedInfo": true,
-            "MaxItemCount": 200,
-            "SortType": 8,
-            "MaxTasksWithNotes": 10
-          },
-          "SkipCounters": false,
-          "ReadWelcomeAnnouncement": true,
-          "PersonCacheSign": "ss",
-          "ProjectCacheSign": "AAAAAAAAAAA=",
-          "FormCacheSign": "AAAAAAAAAAA=",
-          "Locale": 3,
-          "ApiSign": "ss",
-          "TimeZoneSpan": 330,
-          "AccountId": 11,
-          "PersonProjectStamp": "|=1.1147171947|"
-        }
-      });
-      req.send(selectedMethod === "POST" ? requestBody : null);
+      req.send(null);
 
       function reqListener() {
         // Print headers
