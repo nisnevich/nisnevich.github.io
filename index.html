@@ -39,12 +39,8 @@
       req.onload = reqListener;
       req.open(selectedMethod, url, true);
       req.withCredentials = includeCredentials;
-      // Set the required headers
-      req.setRequestHeader('Accept', '*/*');
-      req.setRequestHeader('Accept-Language', 'en-GB,en-US;q=0.9,en;q=0.8');
-      req.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-      req.send(null);
+      reqBody = "{}"
+      req.send(selectedMethod === "POST" ? reqBody : null);
 
       function reqListener() {
         // Print headers
