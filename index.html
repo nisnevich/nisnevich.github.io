@@ -24,7 +24,7 @@
       function reqListener() {
         // Print headers
         console.log(url + " headers: ")
-        colsole.log(this.getAllResponseHeaders())
+        console.log(this.getAllResponseHeaders())
         // Access cookies from the response headers
         var cookies = this.getAllResponseHeaders().split('Set-Cookie:');
         if (cookies.length > 1) {
