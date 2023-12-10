@@ -8,8 +8,24 @@
   <form id="xhrForm">
     <label for="urlInput">Enter URL for testing CORS and check results in console:</label>
     <input type="text" id="urlInput" placeholder="https://example.com">
+
+    <label for="httpMethodSelect">Choose HTTP Method:</label>
+    <select id="httpMethodSelect">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="TRACE">TRACE</option>
+      <option value="TRACK">TRACK</option>
+      <option value="DELETE">DELETE</option>
+      <option value="CONNECT">CONNECT</option>
+      <option value="PUT">PUT</option>
+      <option value="PATCH">PATCH</option>
+      <option value="HEAD">HEAD</option>
+      <option value="OPTIONS">OPTIONS</option>
+    </select>
+
     <label for="credentialsCheckbox">Include credentials (cookies)</label>
-    <input type="checkbox" id="credentialsCheckbox">
+    <input type="checkbox" id="credentialsCheckbox" checked>
+
     <button type="button" onclick="performRequest()">Send Request</button>
   </form>
 
@@ -18,9 +34,10 @@
       var url = document.getElementById('urlInput').value;
       var req = new XMLHttpRequest();
       var includeCredentials = document.getElementById('credentialsCheckbox').checked;
+      var selectedMethod = document.getElementById('httpMethodSelect').value;
 
       req.onload = reqListener;
-      req.open('GET', url, true);
+      req.open(selectedMethod, url, true);
       req.withCredentials = includeCredentials;
       req.send(null);
 
