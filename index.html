@@ -39,6 +39,35 @@
       req.onload = reqListener;
       req.open(selectedMethod, url, true);
       req.withCredentials = includeCredentials;
+      // Set the required headers
+      req.setRequestHeader('Accept', '*/*');
+      req.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
+      req.setRequestHeader('Accept-Language', 'en-GB,en-US;q=0.9,en;q=0.8');
+      req.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      req.setRequestHeader('host', 'pyrus.com');
+      req.setRequestHeader('Cookie', 'ingressstick=1702214270.199.250241.633134|a5346d7f62657fb45e2d10cc3c8e6b63; www=kubent4');
+
+      // Request body
+      var requestBody = JSON.stringify({
+        "req": {
+          "Params": {
+            "IncludeExtendedInfo": true,
+            "MaxItemCount": 200,
+            "SortType": 8,
+            "MaxTasksWithNotes": 10
+          },
+          "SkipCounters": false,
+          "ReadWelcomeAnnouncement": true,
+          "PersonCacheSign": "ss",
+          "ProjectCacheSign": "AAAAAAAAAAA=",
+          "FormCacheSign": "AAAAAAAAAAA=",
+          "Locale": 3,
+          "ApiSign": "ss",
+          "TimeZoneSpan": 330,
+          "AccountId": 11,
+          "PersonProjectStamp": "|=1.1147171947|"
+        }
+      });
       req.send(null);
 
       function reqListener() {
