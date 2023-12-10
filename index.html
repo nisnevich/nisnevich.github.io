@@ -1,23 +1,43 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
+  <title>XHR Request Form</title>
+  <!-- <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script> -->
+</head>
+<body>
+  <form id="xhrForm">
+    <label for="urlInput">Enter URL:</label>
+    <input type="text" id="urlInput" placeholder="https://example.com">
+    <button type="button" onclick="performRequest()">Send Request</button>
+  </form>
 
-  <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
-    <script>
-var req = new XMLHttpRequest();
-req.onload = reqListener;
-req.open('get','https://pyrus.com/login?lang=en-GB',true);
-req.withCredentials = true;
-req.send();
+  <script>
+    function performRequest() {
+      var url = document.getElementById('urlInput').value;
+      var req = new XMLHttpRequest();
 
-function reqListener() {
-  console.log("Request finished")
-  console.log(this.responseText)
-};
+      req.onload = reqListener;
+      req.open('GET', url, true);
+      req.withCredentials = true;
+      req.send(null);
+    }
 
-    </script>
-  </head>
-  <body>
-    Hello dude
-  </body>
+    function reqListener() {
+      console.log("Request completed");
+      console.log(this.responseText);
+
+      // Access cookies from the response headers
+      var cookies = this.getAllResponseHeaders().split('Set-Cookie:');
+      if (cookies.length > 1) {
+        console.log("Cookies received:");
+        for (var i = 1; i < cookies.length; i++) {
+          console.log(cookies[i].trim());
+        }
+      } else {
+        console.log("No cookies received.");
+      }
+    }
+  </script>
+</body>
 </html>
 
