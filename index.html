@@ -8,6 +8,8 @@
   <form id="xhrForm">
     <label for="urlInput">Enter URL for testing CORS and check results in console:</label>
     <input type="text" id="urlInput" placeholder="https://example.com">
+    <label for="credentialsCheckbox">Include credentials (cookies)</label>
+    <input type="checkbox" id="credentialsCheckbox">
     <button type="button" onclick="performRequest()">Send Request</button>
   </form>
 
@@ -15,10 +17,11 @@
     function performRequest() {
       var url = document.getElementById('urlInput').value;
       var req = new XMLHttpRequest();
+      var includeCredentials = document.getElementById('credentialsCheckbox').checked;
 
       req.onload = reqListener;
       req.open('GET', url, true);
-      req.withCredentials = true;
+      req.withCredentials = includeCredentials;
       req.send(null);
 
       function reqListener() {
@@ -35,7 +38,7 @@
         } else {
           console.log("No cookies received.");
         }
-        // Print html
+        // Print HTML
         console.log("Response text:");
         console.log(this.responseText);
       }
