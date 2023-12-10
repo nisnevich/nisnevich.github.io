@@ -6,7 +6,7 @@
 </head>
 <body>
   <form id="xhrForm">
-    <label for="urlInput">Enter URL:</label>
+    <label for="urlInput">Enter URL for testing CORS and check results in console:</label>
     <input type="text" id="urlInput" placeholder="https://example.com">
     <button type="button" onclick="performRequest()">Send Request</button>
   </form>
@@ -23,9 +23,6 @@
     }
 
     function reqListener() {
-      console.log("Request completed");
-      console.log(this.responseText);
-
       // Access cookies from the response headers
       var cookies = this.getAllResponseHeaders().split('Set-Cookie:');
       if (cookies.length > 1) {
@@ -36,6 +33,9 @@
       } else {
         console.log("No cookies received.");
       }
+
+      console.log("Response text:");
+      console.log(this.responseText);
     }
   </script>
 </body>
